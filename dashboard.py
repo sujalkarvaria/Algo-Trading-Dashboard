@@ -66,8 +66,11 @@ df["EMA50"] = df["Close"].ewm(span=50).mean()
 # ---------------- Current Signal ----------------
 last_row = df.iloc[-1]
 
-ema20 = float(last_row["EMA20"])
-ema50 = float(last_row["EMA50"])
+ema20 = last_row["EMA20"]
+ema50 = last_row["EMA50"]
+
+ema20 = float(ema20.iloc[0] if hasattr(ema20, "iloc") else ema20)
+ema50 = float(ema50.iloc[0] if hasattr(ema50, "iloc") else ema50)
 
 if ema20 > ema50:
     current_signal = "BUY"
