@@ -81,11 +81,10 @@ else:
 
 # ---------------- Live Price Box ----------------
 
-last_price = float(df["Close"].values[-1])
-prev_price = float(df["Close"].values[-2])
+last_price = float(df["Close"].iloc[-1].item())
+prev_price = float(df["Close"].iloc[-2].item())
 
-last_price = float(last_price)
-prev_price = float(prev_price)
+
 
 change = last_price - prev_price
 change_pct = (change / prev_price) * 100
