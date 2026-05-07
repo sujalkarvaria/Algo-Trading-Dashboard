@@ -80,8 +80,11 @@ else:
     current_signal = "HOLD"
 
 # ---------------- Live Price Box ----------------
-last_price = float(df["Close"].iloc[-1])
-prev_price = float(df["Close"].iloc[-2])
+last_price = pd.to_numeric(df["Close"], errors="coerce").iloc[-1]
+prev_price = pd.to_numeric(df["Close"], errors="coerce").iloc[-2]
+
+last_price = float(last_price)
+prev_price = float(prev_price)
 
 change = last_price - prev_price
 change_pct = (change / prev_price) * 100
