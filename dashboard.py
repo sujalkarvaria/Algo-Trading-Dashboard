@@ -195,9 +195,9 @@ total_profit = 0.0
 
 for i in range(len(df)):
 
-price = float(df["Close"].iloc[i].item())
+    price = float(df["Close"].iloc[i].item())
 
-trade_signal = (
+    trade_signal = (
         0 if pd.isna(df["Trade"].iloc[i])
         else int(df["Trade"].iloc[i])
     )
